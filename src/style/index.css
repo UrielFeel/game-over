@@ -1,8 +1,17 @@
 @import './modern-normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
+
+  /* colors */
   --white: #f1f2f3;
   --fuchsia: #F22E9A;
+  --electricBlue: #44D2F2;
+  /*  */
+
+  --borderRadius: .5rem;
+  --retroFont: 'Press Start 2P',
+    cursive;
 }
 
 body{
@@ -16,4 +25,31 @@ body{
   min-height: calc(100vh - 120px);
   margin: 0 auto;
   padding-bottom: 3rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+.title-retro {
+  color: var(--white);
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: 'Press Start 2P', cursive;
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  text-shadow:
+    0 0 1px var(--electricBlue),
+    0 0 5px var(--electricBlue),
+    0 0 10px var(--electricBlue),
+    0 0 20px var(--electricBlue),
+    0 0 40px var(--electricBlue);
+}
+
+.title-retro:hover {
+  text-shadow:
+    0 0 1px var(--fuchsia),
+    0 0 5px var(--fuchsia),
+    0 0 10px var(--fuchsia),
+    0 0 20px var(--fuchsia),
+    0 0 40px var(--fuchsia);
 }
