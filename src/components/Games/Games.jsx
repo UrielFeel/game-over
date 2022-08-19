@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Games () {
   return (
-    <div>Games</div>
+    <div className='container'>Games</div>
   )
 }

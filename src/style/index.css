@@ -1,3 +1,19 @@
-:root {
+@import './modern-normalize.css';
 
+:root {
+  --white: #f1f2f3;
+  --fuchsia: #F22E9A;
+}
+
+body{
+  background-image: linear-gradient(to right bottom, #090c15, #0d0c1a, #140b1e, #1b0a20, #220720);
+  user-select: none;
+}
+
+.container{
+  width: 90%;
+  max-width: 1200px;
+  min-height: calc(100vh - 120px);
+  margin: 0 auto;
+  padding-bottom: 3rem;
 }
