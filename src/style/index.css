@@ -29,6 +29,7 @@ body{
 
 a{
   text-decoration: none;
+  vertical-align: middle;
 }
 
 .title-retro {
@@ -52,4 +53,38 @@ a{
     0 0 10px var(--fuchsia),
     0 0 20px var(--fuchsia),
     0 0 40px var(--fuchsia);
+}
+
+.btn{
+  /* reset */
+    outline: none;
+    background: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+  /*  */
+  border-style: solid;
+  border-color: var(--fuchsia);
+  border-radius: var(--borderRadius);
+  border-width: 2px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: .3rem .6rem;
+  margin: 0 auto ;
+
+  color: var(--fuchsia);
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  line-height: 1rem;
+
+  /* filter: drop-shadow(0 0 15px var(--fuchsia)) drop-shadow(0 0 20px var(--fuchsia)) contrast(2) brightness(2); */
+}
+
+.btn:hover{
+  color: black;
+  background-color: #db3eb1;
+  filter: drop-shadow(0 0 20px #db3eb1) contrast(2) brightness(2);
 }

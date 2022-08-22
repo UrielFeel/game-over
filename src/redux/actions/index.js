@@ -1,4 +1,4 @@
-import { GET_ALL_GAMES } from './types'
+import { CLEAR_GAMES, GET_ALL_GAMES } from './types'
 
 const endPoint = 'http://localhost:3001'
 
@@ -11,4 +11,10 @@ export function getAllGames () {
       payload: data
     })
   }
+}
+
+export function clearGames () {
+  return ({
+    type: CLEAR_GAMES
+  })
 }

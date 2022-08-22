@@ -1,4 +1,4 @@
-import { GET_ALL_GAMES } from '../actions/types'
+import { CLEAR_GAMES, GET_ALL_GAMES } from '../actions/types'
 
 const initialState = {
   games: [],
@@ -12,6 +12,13 @@ export default function reducer (state = initialState, action) {
         ...state,
         games: action.payload,
         AllGames: action.payload
+      })
+
+    case CLEAR_GAMES:
+      return ({
+        ...state,
+        AllGames: [],
+        games: []
       })
 
     default:
