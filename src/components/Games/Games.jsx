@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux/es/exports'
 import { clearGames, getAllGames } from '../../redux/actions'
 import CardGame from '../CardGame/CardGame'
+import Pagination from '../Pagination/Pagination'
 import style from './Games.module.css'
+import usePagination from '../../hooks/usePagination'
 
 export default function Games () {
   const games = useSelector(state => state.games)
@@ -18,11 +20,20 @@ export default function Games () {
     }
   }, [])
 
+  const {
+    currentPage,
+    currentData,
+    maxPage,
+    next,
+    prev
+    // jump
+  } = usePagination(games, 6)
+
   return (
     <main className='container'>
       <section className={style.gamesContainer}>
         {
-          games.map(({ id, name, released, image, rating, genres, platforms }) => {
+          currentData().map(({ id, name, released, image, rating, genres, platforms }) => {
             return (
               <CardGame
                 key={id}
@@ -38,6 +49,12 @@ export default function Games () {
           })
         }
       </section>
+      <Pagination
+        currentPage={currentPage}
+        maxPage={maxPage}
+        next={next}
+        prev={prev}
+      />
 
     </main>
   )

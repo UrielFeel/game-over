@@ -1,0 +1,30 @@
+.paginatorContainer {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: 1rem;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+
+  box-shadow: var(--boxShadow);
+  background-color: #1d2135;
+
+  border-radius: var(--borderRadius);
+  border-width: 2px;
+}
+
+.paginatorContainer span {
+  cursor: default;
+  color: var(--white);
+
+  display: flex;
+  align-items: center;
+  padding: .3rem .6rem;
+  /* height: 2rem; */
+  
+  border-style: solid;
+  border-radius: var(--borderRadius);
+  border-width: 1px;
+}
