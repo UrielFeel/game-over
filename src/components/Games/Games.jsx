@@ -9,6 +9,7 @@ import Loader from '../Loader/Loader'
 import NotFound404 from '../NotFound404/NotFound404'
 import Sort from '../SearchFilterSort/Sort'
 import Filter from '../SearchFilterSort/Filter'
+import Search from '../SearchFilterSort/Search'
 
 export default function Games () {
   const games = useSelector(state => state.games)
@@ -39,7 +40,8 @@ export default function Games () {
         games.length === 0
           ? <Loader />
           : <>
-              <div>
+                <Search jump={jump}/>
+              <div className={style.filterSort}>
                 <Filter jump={jump}/>
                 <Sort />
               </div>
