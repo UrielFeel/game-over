@@ -5,6 +5,8 @@ import CardGame from '../CardGame/CardGame'
 import Pagination from '../Pagination/Pagination'
 import style from './Games.module.css'
 import usePagination from '../../hooks/usePagination'
+import Loader from '../Loader/Loader'
+import NotFound404 from '../NotFound404/NotFound404'
 
 export default function Games () {
   const games = useSelector(state => state.games)
@@ -12,8 +14,6 @@ export default function Games () {
 
   useEffect(() => {
     dispatch(getAllGames())
-    // setTimeout(() => {
-    // }, 2000)
 
     return () => {
       dispatch(clearGames())
@@ -27,34 +27,42 @@ export default function Games () {
     next,
     prev
     // jump
-  } = usePagination(games, 6)
+  } = usePagination(games, 10)
+
+  if (games.err) return <NotFound404 />
 
   return (
     <main className='container'>
-      <section className={style.gamesContainer}>
-        {
-          currentData().map(({ id, name, released, image, rating, genres, platforms }) => {
-            return (
-              <CardGame
-                key={id}
-                id={id}
-                name={name}
-                released={released}
-                image={image}
-                rating={rating}
-                genres={genres}
-                platforms={platforms}
+      {
+        games.length === 0
+          ? <Loader />
+          : <>
+              <section className={style.gamesContainer}>
+                {
+                  currentData().map(({ id, name, released, image, rating, genres, platforms }) => {
+                    return (
+                      <CardGame
+                        key={id}
+                        id={id}
+                        name={name}
+                        released={released}
+                        image={image}
+                        rating={rating}
+                        genres={genres}
+                        platforms={platforms}
+                      />
+                    )
+                  })
+                }
+              </section>
+              <Pagination
+                currentPage={currentPage}
+                maxPage={maxPage}
+                next={next}
+                prev={prev}
               />
-            )
-          })
+          </>
         }
-      </section>
-      <Pagination
-        currentPage={currentPage}
-        maxPage={maxPage}
-        next={next}
-        prev={prev}
-      />
 
     </main>
   )

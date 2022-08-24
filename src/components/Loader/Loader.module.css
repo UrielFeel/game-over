@@ -1,0 +1,14 @@
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #f1f2f3;
+  gap: 1rem;
+  position: relative;
+}
+
+.loader span {
+  position: relative;
+  right: 100%;
+}
