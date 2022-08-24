@@ -7,6 +7,7 @@ import style from './Games.module.css'
 import usePagination from '../../hooks/usePagination'
 import Loader from '../Loader/Loader'
 import NotFound404 from '../NotFound404/NotFound404'
+import Sort from '../SearchFilterSort/Sort'
 
 export default function Games () {
   const games = useSelector(state => state.games)
@@ -37,6 +38,9 @@ export default function Games () {
         games.length === 0
           ? <Loader />
           : <>
+              <div>
+                <Sort />
+              </div>
               <section className={style.gamesContainer}>
                 {
                   currentData().map(({ id, name, released, image, rating, genres, platforms }) => {

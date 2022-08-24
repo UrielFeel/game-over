@@ -1,6 +1,6 @@
-import { CLEAR_GAMES, GET_ALL_GAMES } from './types'
+import { CLEAR_GAMES, GET_ALL_GAMES, SORT_GAMES } from './types'
 
-const endPoint = 'http://localhost:3001'
+const endPoint = 'https://urielfeel-videogames.herokuapp.com'
 
 export function getAllGames () {
   return async function (dispatch) {
@@ -16,5 +16,12 @@ export function getAllGames () {
 export function clearGames () {
   return ({
     type: CLEAR_GAMES
+  })
+}
+
+export function sortGames (option) {
+  return ({
+    type: SORT_GAMES,
+    payload: option
   })
 }
