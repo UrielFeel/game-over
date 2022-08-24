@@ -1,8 +1,9 @@
-import { CLEAR_GAMES, GET_ALL_GAMES, SORT_GAMES } from '../actions/types'
+import { CLEAR_GAMES, FILTER_GAMES, GET_ALL_GAMES, GET_GENRES, SORT_GAMES } from '../actions/types'
 
 const initialState = {
   games: [],
-  AllGames: []
+  AllGames: [], // aux para filtrar
+  genres: []
 }
 
 export default function reducer (state = initialState, action) {
@@ -44,6 +45,26 @@ export default function reducer (state = initialState, action) {
       return {
         ...state,
         games: gamesSorted
+      }
+    }
+
+    case GET_GENRES:
+      return {
+        ...state,
+        genres: action.payload.sort((a, b) => {
+          if (a.name > b.name) return 1
+          if (a.name < b.name) return -1
+          return 0
+        })
+      }
+
+    case FILTER_GAMES: {
+      const filteredGames = state.AllGames.filter(game => game.genres.some(genre => Number(genre.id) === Number(action.payload)))
+      return {
+        ...state,
+        games: Number(action.payload) === 0
+          ? state.AllGames
+          : filteredGames.length === 0 ? [{ results: 0 }] : filteredGames
       }
     }
 

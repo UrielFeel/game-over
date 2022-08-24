@@ -8,6 +8,7 @@ import usePagination from '../../hooks/usePagination'
 import Loader from '../Loader/Loader'
 import NotFound404 from '../NotFound404/NotFound404'
 import Sort from '../SearchFilterSort/Sort'
+import Filter from '../SearchFilterSort/Filter'
 
 export default function Games () {
   const games = useSelector(state => state.games)
@@ -26,8 +27,8 @@ export default function Games () {
     currentData,
     maxPage,
     next,
-    prev
-    // jump
+    prev,
+    jump
   } = usePagination(games, 10)
 
   if (games.err) return <NotFound404 />
@@ -39,6 +40,7 @@ export default function Games () {
           ? <Loader />
           : <>
               <div>
+                <Filter jump={jump}/>
                 <Sort />
               </div>
               <section className={style.gamesContainer}>
